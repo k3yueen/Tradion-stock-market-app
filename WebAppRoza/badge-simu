@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>First Page</title>
+  <link rel="stylesheet" href="var.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="first-page">
+    <div class="email">
+      <div class="rectangle-7"></div>
+    </div>
+    <div class="sign-in">Sign In</div>
+    <div class="email">
+      <div class="rectangle-72"></div>
+    </div>
+    <div class="register">Register</div>
+    <img class="image-9" src="image-90.png" />
+  </div>
+</body>
+
+</html>
