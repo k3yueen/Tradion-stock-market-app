@@ -320,7 +320,7 @@
         const lat = position.coords.latitude;
         const lng = position.coords.longitude;
         // Use Google Maps Geocoding API to get country/city
-        fetch(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lng}&key=AIzaSyBI-AHHtgOtvnkD_57c4Kdo6mMhPFFHDT0`)
+        fetch('Google API`)
           .then(res => res.json())
           .then(data => {
             let country = '';
