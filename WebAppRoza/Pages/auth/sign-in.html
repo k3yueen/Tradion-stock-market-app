@@ -5,8 +5,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>TRADION - Sign In</title>
+
+  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500&display=swap" rel="stylesheet" />
+
   <style>
+    /* Base styling */
     body {
       font-family: 'Plus Jakarta Sans', sans-serif;
       min-height: 100vh;
@@ -19,16 +23,16 @@
       position: relative;
     }
 
+    /* Logo display */
     .logo {
       width: 347px;
       height: 349px;
-      flex-shrink: 0;
-      aspect-ratio: 347/349;
       background: url('../assets/logo/logo.png') center/contain no-repeat;
       margin-bottom: 32px;
       margin-top: 2px;
     }
 
+    /* Form container */
     .form {
       display: flex;
       flex-direction: column;
@@ -37,63 +41,50 @@
       width: 100%;
       max-width: 500px;
       margin: 0 auto;
-      position: relative;
     }
 
+    /* Input box wrapper */
     .input-box {
-      width: 100%;
+      width: 503px;
+      height: 99px;
       display: flex;
       flex-direction: column;
-      align-items: center;
+      justify-content: flex-start;
     }
 
+    /* Common input styles */
     .input-field {
       width: 100%;
+      height: 99px;
       border-radius: 20px;
       background: rgba(12, 12, 12, 0.40);
       outline: none;
-      text-align: left;
-      font-family: 'Plus Jakarta Sans', sans-serif;
+      padding-left: 24px;
       font-size: 22px;
-      font-weight: 400;
       color: #FFF;
       border: 1px solid #180E8B;
-      height: 60px;
-      margin-bottom: 0;
-      padding-left: 24px;
       transition: border 0.2s;
     }
 
+    /* Placeholder style */
     .input-field::placeholder {
       color: #C4C4CC;
-      text-align: left;
-      font-family: 'Plus Jakarta Sans', sans-serif;
       font-size: 20px;
-      font-style: normal;
-      font-weight: 400;
-      line-height: normal;
-      letter-spacing: -0.3px;
       opacity: 0.5;
     }
 
+    /* Error state */
     .input-field.error {
       border: 1px solid #E84A5F !important;
-      background: rgba(12, 12, 12, 0.40);
     }
 
+    /* Password-specific styling */
     .password-box .input-field {
       border: 1px solid #0F095A;
     }
 
     .password-box .input-field::placeholder {
       color: #C4C4CC;
-      text-align: left;
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: 20px;
-      font-style: normal;
-      font-weight: 400;
-      line-height: normal;
-      letter-spacing: -0.3px;
       opacity: 0.5;
     }
 
@@ -101,19 +92,17 @@
       border: 1px solid #E84A5F !important;
     }
 
+    /* Social sign-in section */
     .social-section {
       width: 100%;
       display: flex;
       flex-direction: column;
       align-items: center;
-      margin-top: 16px;
-      margin-bottom: 16px;
+      margin: 16px 0;
     }
 
     .or-signin {
       color: #C4C4CC;
-      text-align: center;
-      font-family: 'Plus Jakarta Sans', sans-serif;
       font-size: 18px;
       font-weight: 500;
       margin-bottom: 12px;
@@ -128,19 +117,16 @@
       border-radius: 47px;
       border: 1px solid #0F095A;
       padding: 12px 32px;
-      width: auto;
       height: 60px;
     }
 
     .social-icon {
       width: 36px;
       height: 36px;
-      border-radius: 50%;
-      background: transparent;
       object-fit: contain;
-      display: block;
     }
 
+    /* Sign in button */
     .sign-in-btn {
       position: fixed;
       right: 48px;
@@ -153,7 +139,6 @@
       color: #FFF;
       font-size: 24px;
       font-weight: 500;
-      letter-spacing: -0.3px;
       cursor: pointer;
       display: flex;
       align-items: center;
@@ -164,29 +149,19 @@
       transition: all 0.3s;
     }
 
-    .sign-in-icon {
-      font-family: 'Font Awesome 5 Free';
-      font-weight: 900;
-      font-size: 22px;
-      margin-right: 8px;
-    }
-
     .sign-in-icon-img {
       width: 28px;
       height: 28px;
-      margin-right: 8px;
       object-fit: contain;
-      display: inline-block;
-      vertical-align: middle;
     }
 
+    /* Bottom links */
     .bottom-links {
       position: fixed;
       left: 48px;
       bottom: 48px;
       display: flex;
       flex-direction: column;
-      align-items: flex-start;
       gap: 8px;
       z-index: 20;
     }
@@ -194,17 +169,13 @@
     .signup-link,
     .forgot-link {
       color: #C4C4CC;
-      text-align: left;
-      font-family: 'Plus Jakarta Sans', sans-serif;
       font-size: 18px;
-      font-weight: 400;
+      cursor: pointer;
       background: transparent;
       border: none;
-      cursor: pointer;
-      padding: 0;
-      margin: 0;
     }
 
+    /* Error message display */
     .error-message {
       color: #E84A5F;
       font-size: 18px;
@@ -214,11 +185,11 @@
       font-weight: 500;
     }
 
+    /* Responsive adjustments */
     @media (max-width: 700px) {
       .logo {
         width: 180px;
         height: 181px;
-        margin-top: 2px;
       }
 
       .form {
@@ -237,15 +208,21 @@
 </head>
 
 <body>
+  <!-- Logo Section -->
   <div class="logo"></div>
+
+  <!-- Sign In Form -->
   <form class="form" id="signInForm" autocomplete="off" novalidate>
+    <!-- Email Input -->
     <div class="input-box">
       <input type="text" id="emailInput" class="input-field" placeholder="Email or Phone Number" autocomplete="email" />
     </div>
+    <!-- Password Input -->
     <div class="input-box password-box">
-      <input type="password" id="passwordInput" class="input-field" placeholder="Password"
-        autocomplete="current-password" />
+      <input type="password" id="passwordInput" class="input-field" placeholder="Password" autocomplete="current-password" />
     </div>
+
+    <!-- Social Sign-in -->
     <div class="social-section">
       <div class="or-signin">or sign in with</div>
       <div class="social-login">
@@ -254,35 +231,63 @@
         <img src="../assets/icons/facebook dark.png" alt="Facebook" class="social-icon" />
       </div>
     </div>
+
+    <!-- Submit Button -->
     <button type="submit" class="sign-in-btn">
-      <img src="../assets/icons/login dark.png" alt="Sign In" class="sign-in-icon-img" /> Sign In
+      <img src="../assets/icons/login dark.png" alt="Sign In" class="sign-in-icon-img" />
+      Sign In
     </button>
+
+    <!-- Error Display -->
     <div class="error-message" id="errorMsg"></div>
   </form>
+
+  <!-- Bottom Links -->
   <div class="bottom-links">
-    <div class="signup-link" id="signupLink">
-      You don't have an account? Sign up now
-    </div>
-    <div class="forgot-link" id="forgotLink">
-      Forgot Password?
-    </div>
+    <div class="signup-link" id="signupLink">You don't have an account? Sign up now</div>
+    <div class="forgot-link" id="forgotLink">Forgot Password?</div>
   </div>
+
+  <!-- Firebase SDKs -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+
   <script>
+    // Form element references
     const emailInput = document.getElementById('emailInput');
     const passwordInput = document.getElementById('passwordInput');
     const form = document.getElementById('signInForm');
     const errorMsg = document.getElementById('errorMsg');
     const signupLink = document.getElementById('signupLink');
+    const forgotLink = document.getElementById('forgotLink');
 
+    // Simple email validation
     function validateEmail(email) {
       return email.includes('@');
     }
 
+    // Firebase configuration (API KEY CENSORED)
+    const firebaseConfig = {
+      apiKey: "AIzaSy*****REDACTED*****",
+      authDomain: "retardion-stockmarket-webapp.firebaseapp.com",
+      projectId: "retardion-stockmarket-webapp",
+      storageBucket: "retardion-stockmarket-webapp.appspot.com",
+      messagingSenderId: "658950069809",
+      appId: "1:658950069809:web:fefb8a992383a1d4087f10",
+      measurementId: "G-R1ETL8QXEJ"
+    };
+
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+
+    // Handle form submission
     form.addEventListener('submit', function (e) {
       e.preventDefault();
       let valid = true;
       errorMsg.textContent = '';
-      // Email validation
+
+      // Validate email
       if (!emailInput.value.trim() || !validateEmail(emailInput.value.trim())) {
         emailInput.classList.add('error');
         errorMsg.textContent = 'Email is required.';
@@ -290,7 +295,8 @@
       } else {
         emailInput.classList.remove('error');
       }
-      // Password validation
+
+      // Validate password
       if (!passwordInput.value.trim()) {
         passwordInput.classList.add('error');
         errorMsg.textContent = 'Password is required.';
@@ -298,25 +304,43 @@
       } else {
         passwordInput.classList.remove('error');
       }
+
+      // Sign in if valid
       if (valid) {
-        errorMsg.textContent = '';
-        alert('Sign in successful!');
+        auth.signInWithEmailAndPassword(emailInput.value, passwordInput.value)
+          .then((userCredential) => {
+            alert('Sign in successful!');
+          })
+          .catch((error) => {
+            errorMsg.textContent = error.message;
+          });
       }
     });
+
+    // Real-time validation for email input
     emailInput.addEventListener('input', () => {
       if (validateEmail(emailInput.value.trim())) {
         emailInput.classList.remove('error');
         errorMsg.textContent = '';
       }
     });
+
+    // Real-time validation for password input
     passwordInput.addEventListener('input', () => {
       if (passwordInput.value.trim()) {
         passwordInput.classList.remove('error');
         errorMsg.textContent = '';
       }
     });
+
+    // Redirect to registration page
     signupLink.addEventListener('click', function () {
-      window.location.href = 'register.html'; // Adjust path if needed
+      window.location.href = 'register.html';
+    });
+
+    // Redirect to forgot password page
+    forgotLink.addEventListener('click', function () {
+      window.location.href = 'forgot-password.html';
     });
   </script>
 </body>
