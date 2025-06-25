@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Specifies UTF-8 character encoding to ensure proper text rendering -->
+  <meta charset="UTF-8" />
+  <!-- Ensures responsive behavior on mobile and varying screen sizes -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Sets the page title displayed in the browser tab -->
+  <title>TRADION</title>
+
+  <!-- Includes Bootstrap 5.3.0 CSS for layout and components -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+  <!-- Imports web fonts for custom typography -->
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans&family=DM+Sans:wght@500&display=swap"
+    rel="stylesheet" />
+
+  <!-- Embedded styles for page layout and design -->
+  <style>
+    /* CSS custom properties for reusability and maintainability */
+    :root {
+      --btn-bg: rgba(12, 12, 12, 0.4); /* button background (semi-transparent black) */
+      --btn-border: #180E8B; /* button border color */
+      --btn-shadow: rgba(78, 205, 196, 0.3); /* drop shadow color */
+      --font-primary: 'Plus Jakarta Sans', sans-serif; /* main font */
+      --font-secondary: 'DM Sans', sans-serif; /* secondary font */
+    }
+
+    /* Resets box model and spacing */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Base body styling: background image, full height layout */
+    body {
+      font-family: var(--font-primary);
+      height: 100vh;
+      background: url('assets/background/background.png') center/cover no-repeat fixed;
+      position: relative;
+      overflow: hidden; /* disables scrollbars if content overflows */
+    }
+
+    /* Background overlay layer to duplicate image and apply z-index layering */
+    .bg-overlay {
+      position: absolute;
+      inset: 0; /* top/right/bottom/left = 0 */
+      background: url('assets/background/background.png') center/cover no-repeat;
+      z-index: 1;
+    }
+
+    /* Main container holding the centered content */
+    .content {
+      position: relative;
+      z-index: 2; /* above overlay */
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 2rem;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    /* Logo container rendered via background-image */
+    .logo-background {
+      width: 300px;
+      height: 300px;
+      max-width: 80vw;
+      background: url('assets/logo/logo.png') center/contain no-repeat;
+      filter: drop-shadow(0 10px 30px var(--btn-shadow)); /* adds a subtle shadow */
+      transition: transform 0.3s ease; /* optional hover transition */
+    }
+
+    /* Shared button styling with glassmorphism effect */
+    .btn-glass {
+      width: 280px;
+      max-width: 90vw;
+      height: 70px;
+      font-size: 28px;
+      font-family: var(--font-secondary);
+      border-radius: 20px;
+      border: 1px solid var(--btn-border);
+      background: var(--btn-bg);
+      color: #ffffff;
+      -webkit-backdrop-filter: blur(10px); /* Safari support */
+      backdrop-filter: blur(10px); /* blur effect behind */
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Hover shimmer animation (purely visual) */
+    .btn-glass::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(78, 205, 196, 0.2), transparent);
+      transition: left 0.6s ease;
+    }
+
+    /* Triggers shimmer animation on hover */
+    .btn-glass:hover::before {
+      left: 100%;
+    }
+
+    /* Media query for larger screens (≥768px) */
+    @media (min-width: 768px) {
+      .logo-background {
+        width: 400px;
+        height: 400px;
+      }
+
+      .btn-glass {
+        width: 400px;
+        height: 95px;
+        font-size: 32px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Overlay background to support layering of content and UI -->
+  <div class="bg-overlay"></div>
+
+  <!-- Main UI container -->
+  <main class="content">
+    <!-- Logo section rendered via background image -->
+    <div class="logo-background"></div>
+
+    <!-- Unused decorative container (structure placeholder) -->
+    <div class="email">
+      <div class="rectangle-7"></div>
+    </div>
+
+    <!-- Sign-in button (navigates to sign-in page on click) -->
+    <button class="btn-glass" onclick="window.location.href='pages/sign-in.html'">Sign In</button>
+
+    <!-- Another unused decorative container (structure placeholder) -->
+    <div class="email">
+      <div class="rectangle-72"></div>
+    </div>
+
+    <!-- Register button (navigates to registration page on click) -->
+    <button class="btn-glass" onclick="window.location.href='pages/register.html'">Register</button>
+  </main>
+
+  <script>
+    // Keyboard event listener for page navigation via shortcuts
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") navigateTo("sign-in");
+      if (e.key.toLowerCase() === "r") navigateTo("register");
+    });
+
+    // Navigation utility function (hardcoded relative path)
+    function navigateTo(page) {
+      window.location.href = `pages/${page}.html`;
+    }
+  </script>
+</body>
+
+</html>
