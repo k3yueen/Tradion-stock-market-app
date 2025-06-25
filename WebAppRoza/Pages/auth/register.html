@@ -2,10 +2,18 @@
 <html lang="en">
 
 <head>
+  <!-- Character encoding and viewport setup for responsive behavior -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <!-- Document title -->
+  <title>TRADION - Register</title>
+
+  <!-- External font (not system default; custom aesthetic) -->
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500&display=swap" rel="stylesheet" />
+
   <style>
+    /* Basic body styling with background image */
     body {
       font-family: 'Plus Jakarta Sans', sans-serif;
       min-height: 100vh;
@@ -18,16 +26,16 @@
       position: relative;
     }
 
+    /* Logo block with fixed size and background image */
     .logo {
       width: 347px;
       height: 349px;
-      flex-shrink: 0;
-      aspect-ratio: 347/349;
       background: url('../assets/logo/logo.png') center/contain no-repeat;
       margin-bottom: 32px;
       margin-top: 2px;
     }
 
+    /* Container for the full form */
     .register-form {
       display: flex;
       flex-direction: column;
@@ -39,82 +47,84 @@
       position: relative;
     }
 
+    /* Layout of each row in the form (responsive columns) */
     .row {
       display: flex;
       width: 100%;
       gap: 32px;
-      margin-bottom: 0;
     }
 
-    .row-3>.input-box {
-      flex: 1 1 0;
-      min-width: 0;
-    }
-
+    /* Flex rules for each row group */
+    .row-3>.input-box,
     .row-2>.input-box {
       flex: 1 1 0;
       min-width: 0;
     }
 
+    /* Input container */
     .input-box {
-      width: 100%;
+      width: 503px;
+      height: 99px;
       display: flex;
       flex-direction: column;
-      align-items: center;
+      justify-content: center;
     }
 
-    .input-field {
+    /* Input fields: unified style for text/select inputs */
+    .input-field,
+    select.input-field {
       width: 100%;
+      height: 95px !important;
       border-radius: 20px;
       background: rgba(12, 12, 12, 0.40);
       outline: none;
-      text-align: left;
-      font-family: 'Plus Jakarta Sans', sans-serif;
       font-size: 22px;
-      font-weight: 400;
       color: #FFF;
       border: 1px solid #180E8B;
-      height: 60px;
-      margin-bottom: 0;
       padding-left: 24px;
+      padding-right: 40px;
+      box-sizing: border-box;
       transition: border 0.2s;
+      appearance: none;
     }
 
+    /* Styling for dropdown select appearance */
+    select.input-field {
+      background-image: url("data:image/svg+xml;utf8,<svg fill='white' height='24' viewBox='0 0 24 24' width='24'><path d='M7 10l5 5 5-5z'/></svg>");
+      background-repeat: no-repeat;
+      background-position: right 16px center;
+      background-size: 24px 24px;
+      cursor: pointer;
+    }
+
+    /* Placeholder styling */
     .input-field::placeholder {
       color: #C4C4CC;
-      text-align: left;
-      font-family: 'Plus Jakarta Sans', sans-serif;
       font-size: 20px;
-      font-style: normal;
-      font-weight: 400;
-      line-height: normal;
-      letter-spacing: -0.3px;
       opacity: 0.5;
     }
 
+    /* Error state for input */
     .input-field.error {
       border: 1px solid #E84A5F !important;
-      background: rgba(12, 12, 12, 0.40);
     }
 
+    /* Section for social login options */
     .social-section {
       width: 100%;
       display: flex;
       flex-direction: column;
       align-items: center;
-      margin-top: 16px;
-      margin-bottom: 16px;
     }
 
+    /* Text above social icons */
     .or-register {
       color: #C4C4CC;
-      text-align: center;
-      font-family: 'Plus Jakarta Sans', sans-serif;
       font-size: 18px;
       font-weight: 500;
-      margin-bottom: 12px;
     }
 
+    /* Container for social login icons */
     .social-login {
       display: flex;
       align-items: center;
@@ -124,19 +134,17 @@
       border-radius: 47px;
       border: 1px solid #0F095A;
       padding: 12px 32px;
-      width: auto;
       height: 60px;
     }
 
+    /* Icons inside social login */
     .social-icon {
       width: 36px;
       height: 36px;
-      border-radius: 50%;
-      background: transparent;
       object-fit: contain;
-      display: block;
     }
 
+    /* Floating register button */
     .register-btn {
       position: fixed;
       right: 48px;
@@ -144,40 +152,32 @@
       width: 260px;
       height: 60px;
       border-radius: 30px;
-      border: 1px solid #180E8B;
       background: rgba(12, 12, 12, 0.40);
+      border: 1px solid #180E8B;
       color: #FFF;
       font-size: 24px;
       font-weight: 500;
-      letter-spacing: -0.3px;
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 16px;
-      box-shadow: 0 4px 32px rgba(24, 14, 139, 0.15);
-      z-index: 20;
-      transition: all 0.3s;
     }
 
     .register-icon-img {
       width: 28px;
       height: 28px;
-      margin-right: 8px;
-      object-fit: contain;
-      display: inline-block;
-      vertical-align: middle;
     }
 
     .error-message {
       color: #E84A5F;
       font-size: 18px;
-      margin-top: 10px;
       text-align: center;
       min-height: 24px;
       font-weight: 500;
     }
 
+    /* Responsive behavior for tablets */
     @media (max-width: 1200px) {
       .register-form {
         max-width: 98vw;
@@ -187,22 +187,13 @@
         flex-direction: column;
         gap: 16px;
       }
-
-      .row-3,
-      .row-2 {
-        flex-direction: column;
-      }
     }
 
+    /* Responsive behavior for mobile phones */
     @media (max-width: 700px) {
       .logo {
         width: 180px;
         height: 181px;
-        margin-top: 2px;
-      }
-
-      .register-form {
-        max-width: 95vw;
       }
 
       .register-btn {
@@ -216,22 +207,30 @@
 </head>
 
 <body>
+  <!-- Logo image (background only) -->
   <div class="logo"></div>
+
+  <!-- Registration form (Firebase-powered) -->
   <form class="register-form" id="registerForm" autocomplete="off" novalidate>
+    <!-- Row with three inputs -->
     <div class="row row-3">
       <div class="input-box"><input type="text" id="nameInput" class="input-field" placeholder="Name" /></div>
       <div class="input-box"><input type="text" id="phoneInput" class="input-field" placeholder="Phone Number" /></div>
       <div class="input-box"><input type="email" id="emailInput" class="input-field" placeholder="Email" /></div>
     </div>
+
+    <!-- Row with password and location -->
     <div class="row row-2">
-      <div class="input-box"><input type="password" id="passwordInput" class="input-field" placeholder="Password" />
-      </div>
+      <div class="input-box"><input type="password" id="passwordInput" class="input-field" placeholder="Password" /></div>
       <div class="input-box">
-        <select id="countryInput" class="input-field">
+        <label for="countryInput" class="visually-hidden">Country</label>
+        <select id="countryInput" class="input-field" aria-label="Country">
           <option value="">Detecting location...</option>
         </select>
       </div>
     </div>
+
+    <!-- Static social login section -->
     <div class="social-section">
       <div class="or-register">or register with</div>
       <div class="social-login">
@@ -240,12 +239,23 @@
         <img src="../assets/icons/facebook dark.png" alt="Facebook" class="social-icon" />
       </div>
     </div>
+
+    <!-- Floating submit button -->
     <button type="submit" class="register-btn">
       <img src="../assets/icons/login dark.png" alt="Register" class="register-icon-img" /> Register
     </button>
+
+    <!-- Error message block -->
     <div class="error-message" id="errorMsg"></div>
   </form>
+
+  <!-- Firebase SDKs (authentication and database) -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+
   <script>
+    // Element references
     const form = document.getElementById('registerForm');
     const nameInput = document.getElementById('nameInput');
     const phoneInput = document.getElementById('phoneInput');
@@ -254,61 +264,90 @@
     const countryInput = document.getElementById('countryInput');
     const errorMsg = document.getElementById('errorMsg');
 
+    // Firebase config (sensitive API keys redacted)
+    const firebaseConfig = {
+      apiKey: "AIzaSy****REDACTED****",
+      authDomain: "retardion-stockmarket-webapp.firebaseapp.com",
+      projectId: "retardion-stockmarket-webapp",
+      storageBucket: "retardion-stockmarket-webapp.appspot.com",
+      messagingSenderId: "658950069809",
+      appId: "1:658950069809:web:****REDACTED****",
+      measurementId: "G-R1ETL8QXEJ"
+    };
+
+    // Initialize Firebase app
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+    const auth = firebase.auth();
+
+    // Form submission logic
     form.addEventListener('submit', function (e) {
       e.preventDefault();
       let valid = true;
       errorMsg.textContent = '';
+
+      // Check if all fields are empty (special case)
       if (!nameInput.value.trim() && !phoneInput.value.trim() && !emailInput.value.trim() && !passwordInput.value.trim() && (!countryInput.value || countryInput.value === '')) {
         errorMsg.textContent = 'All fields are required';
-        nameInput.classList.add('error');
-        phoneInput.classList.add('error');
-        emailInput.classList.add('error');
-        passwordInput.classList.add('error');
-        countryInput.classList.add('error');
+        [nameInput, phoneInput, emailInput, passwordInput, countryInput].forEach(el => el.classList.add('error'));
         return;
       }
+
+      // Field-by-field validation
       if (!nameInput.value.trim()) {
         nameInput.classList.add('error');
         errorMsg.textContent = 'Name is required.';
         valid = false;
-      } else {
-        nameInput.classList.remove('error');
-      }
+      } else nameInput.classList.remove('error');
+
       if (!phoneInput.value.trim()) {
         phoneInput.classList.add('error');
         errorMsg.textContent = 'Phone number is required.';
         valid = false;
-      } else {
-        phoneInput.classList.remove('error');
-      }
+      } else phoneInput.classList.remove('error');
+
       if (!emailInput.value.trim() || !emailInput.value.includes('@')) {
         emailInput.classList.add('error');
         errorMsg.textContent = 'Email is required.';
         valid = false;
-      } else {
-        emailInput.classList.remove('error');
-      }
+      } else emailInput.classList.remove('error');
+
       if (!passwordInput.value.trim()) {
         passwordInput.classList.add('error');
         errorMsg.textContent = 'Password is required.';
         valid = false;
-      } else {
-        passwordInput.classList.remove('error');
-      }
+      } else passwordInput.classList.remove('error');
+
       if (!countryInput.value || countryInput.value === '') {
         countryInput.classList.add('error');
         errorMsg.textContent = 'Country is required.';
         valid = false;
-      } else {
-        countryInput.classList.remove('error');
-      }
+      } else countryInput.classList.remove('error');
+
+      // If valid, proceed to Firebase auth + DB
       if (valid) {
         errorMsg.textContent = '';
-        alert('Registration successful!');
+        auth.createUserWithEmailAndPassword(emailInput.value, passwordInput.value)
+          .then((userCredential) => {
+            return db.collection('users').doc(userCredential.user.uid).set({
+              name: nameInput.value,
+              phone: phoneInput.value,
+              email: emailInput.value,
+              country: countryInput.value
+            });
+          })
+          .then(() => {
+            alert('Registration successful!');
+          })
+          .catch((error) => {
+            errorMsg.textContent = error.message;
+          });
       }
     });
+  </script>
 
-    // Geolocation and reverse geocoding for country/city
+  <!-- Geolocation + Google Maps reverse geocoding -->
+  <script>
     window.addEventListener('DOMContentLoaded', function () {
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(success, error);
@@ -319,8 +358,9 @@
       function success(position) {
         const lat = position.coords.latitude;
         const lng = position.coords.longitude;
-        // Use Google Maps Geocoding API to get country/city
-        fetch('Google API`)
+
+        // Redacted Google Maps API key
+        fetch(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lng}&key=AIzaSy****REDACTED****`)
           .then(res => res.json())
           .then(data => {
             let country = '';
@@ -331,6 +371,7 @@
                 if (comp.types.includes('locality')) city = comp.long_name;
               });
             }
+
             countryInput.innerHTML = '';
             if (city && country) {
               countryInput.innerHTML += `<option value="${city}, ${country}">${city}, ${country}</option>`;
@@ -339,10 +380,15 @@
             } else {
               countryInput.innerHTML = '<option value="">Location not found</option>';
             }
+          })
+          .catch(err => {
+            console.error('Geocode fetch error:', err);
+            countryInput.innerHTML = '<option value="">Location not found</option>';
           });
       }
 
-      function error() {
+      function error(err) {
+        console.error('Geolocation error:', err);
         countryInput.innerHTML = '<option value="">Unable to detect location</option>';
       }
     });
@@ -350,3 +396,4 @@
 </body>
 
 </html>
+
