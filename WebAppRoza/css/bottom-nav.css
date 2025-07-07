@@ -1,0 +1,103 @@
+/* Fixed bottom navigation bar with glassmorphism effect */
+.bottom-nav {
+ position: fixed;
+ left: 50%;
+ bottom: 32px;
+ transform: translateX(-50%); /* Center horizontally */
+ background: rgba(12, 12, 12, 0.4); /* Semi-transparent dark background */
+ border: 1.5px solid #180E8B; /* Purple border */
+ border-radius: 40px; /* Rounded pill shape */
+ box-shadow: 0 8px 32px rgba(24, 14, 139, 0.25); /* Purple glow shadow */
+ padding: 0.75rem;
+ z-index: 1000; /* Stay above other elements */
+ backdrop-filter: blur(12px); /* Glassmorphism blur effect */
+}
+
+/* Navigation list container */
+.bottom-nav ul {
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ gap: 1.25rem; /* Space between nav items */
+ list-style: none; /* Remove bullet points */
+ margin: 0;
+ padding: 0;
+}
+
+/* Individual navigation links */
+.bottom-nav li a {
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ width: 56px;
+ height: 56px;
+ background: rgba(24, 14, 139, 0.18); /* Subtle purple background */
+ border: 1px solid rgba(255, 255, 255, 0.08); /* Faint white border */
+ border-radius: 50%; /* Circular shape */
+ transition: all 0.2s ease-in-out; /* Smooth hover animations */
+}
+
+/* Hover effect for navigation links */
+.bottom-nav li a:hover {
+ background: rgba(78, 205, 196, 0.2); /* Teal background on hover */
+ transform: scale(1.1); /* Slightly enlarge on hover */
+}
+
+/* Icons inside navigation links */
+.bottom-nav .nav-icon {
+ width: 32px;
+ height: 32px;
+ transition: transform 0.2s; /* Smooth icon animations */
+}
+
+/* Special main action button container */
+.bottom-nav .nav-main-action {
+ position: relative;
+ width: 48px;
+ height: 48px;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+}
+
+/* Glowing effect for main action button */
+.bottom-nav .main-action-glow {
+ width: 40px;
+ height: 40px;
+ border-radius: 50%;
+ background: radial-gradient(circle, #4ECDC4 0%, #180E8B 80%, transparent 100%); /* Teal to purple gradient */
+ box-shadow: 0 0 24px 8px #4ECDC4, 0 0 0 8px rgba(24, 14, 139, 0.15); /* Multiple glow layers */
+ display: block;
+}
+
+/* Mobile responsive styles */
+@media (max-width: 600px) {
+ .bottom-nav {
+   min-width: 90vw; /* Almost full width on mobile */
+   padding: 0 8px;
+   bottom: 12px; /* Closer to bottom edge */
+ }
+
+ .bottom-nav ul {
+   gap: 16px; /* Smaller spacing on mobile */
+   height: 56px;
+ }
+
+ /* Smaller icons on mobile */
+ .bottom-nav .nav-icon {
+   width: 24px;
+   height: 24px;
+ }
+
+ /* Smaller main action button on mobile */
+ .bottom-nav .nav-main-action {
+   width: 36px;
+   height: 36px;
+ }
+
+ /* Smaller glow effect on mobile */
+ .bottom-nav .main-action-glow {
+   width: 28px;
+   height: 28px;
+ }
+}
